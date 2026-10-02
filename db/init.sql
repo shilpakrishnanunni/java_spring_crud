@@ -38,7 +38,8 @@ CREATE TABLE IF NOT EXISTS menu_items (
 CREATE TYPE order_status_enum AS ENUM ('PLACED', 'ACCEPTED', 'PREPARING', 'READY', 'COMPLETED', 'CANCELLED', 'REJECTED');
 CREATE TABLE IF NOT EXISTS orders (
     id BIGSERIAL PRIMARY KEY,
-    user_id BIGINT NOT NULL REFERENCES users(id),
+    user_id BIGINT REFERENCES users(id),
+    order_token VARCHAR(32) NOT NULL UNIQUE,
     status order_status_enum DEFAULT 'PLACED',
     total_amount DECIMAL(10,2) NOT NULL CHECK (total_amount >= 0),
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
