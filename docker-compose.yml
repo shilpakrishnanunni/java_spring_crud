@@ -1,12 +1,20 @@
 services:
   app:
-    build: .
+#    build: .
+    image: eclipse-temurin:21-jdk
+    working_dir: /app
+    volumes:
+      - .:/app
+      - maven_cache:/root/.m2
     ports:
       - "8080:8080"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/spring_crud
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRATION: ${JWT_EXPIRATION}
+    command: ./mvnw spring-boot:run
     depends_on:
       - postgres
 
@@ -25,10 +33,16 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_CONFIG_SERVER_MODE: "False"
     ports:
       - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+      - ./pgadmin/servers.json:/pgadmin4/servers.json:ro
     depends_on:
       - postgres
 
 volumes:
   postgres_data:
+  maven_cache:
+  pgadmin_data:

@@ -1,4 +1,4 @@
-package org.example.TestProject.exception;
+package org.example.TermProject.exception;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(Long id) {

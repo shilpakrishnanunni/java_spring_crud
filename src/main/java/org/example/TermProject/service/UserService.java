@@ -1,9 +1,9 @@
-package org.example.TestProject.service;
+package org.example.TermProject.service;
 
-import org.example.TestProject.dto.UserRequest;
-import org.example.TestProject.entities.User;
-import org.example.TestProject.exception.UserNotFoundException;
-import org.example.TestProject.repository.UserRepository;
+import org.example.TermProject.dto.UserRequest;
+import org.example.TermProject.entities.User;
+import org.example.TermProject.exception.UserNotFoundException;
+import org.example.TermProject.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

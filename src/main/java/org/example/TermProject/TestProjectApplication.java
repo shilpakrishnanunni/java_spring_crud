@@ -1,4 +1,4 @@
-package org.example.TestProject;
+package org.example.TermProject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

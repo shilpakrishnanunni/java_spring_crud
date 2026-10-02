@@ -1,9 +1,7 @@
-package org.example.TestProject.exception;
+package org.example.TermProject.exception;
 
-import org.example.TestProject.dto.ErrorResponse;
+import org.example.TermProject.dto.ErrorResponse;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

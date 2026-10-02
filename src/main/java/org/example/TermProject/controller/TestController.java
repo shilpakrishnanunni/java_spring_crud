@@ -1,18 +1,14 @@
-package org.example.TestProject.controller;
+package org.example.TermProject.controller;
 
 import jakarta.validation.Valid;
-import org.example.TestProject.entities.User;
-import org.example.TestProject.dto.PatchUserRequest;
-import org.example.TestProject.dto.UserRequest;
-import org.example.TestProject.exception.UserNotFoundException;
-import org.example.TestProject.service.UserService;
+import org.example.TermProject.entities.User;
+import org.example.TermProject.dto.UserRequest;
+import org.example.TermProject.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @RestController
@@ -23,6 +19,11 @@ public class TestController {
 
     public TestController(UserService userService) {
         this.userService = userService;
+    }
+
+    @GetMapping("/")
+    public String root() {
+        return "Hello, World!";
     }
 
     @GetMapping("/hello/{name}")

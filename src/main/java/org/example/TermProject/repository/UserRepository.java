@@ -1,9 +1,12 @@
-package org.example.TestProject.repository;
+package org.example.TermProject.repository;
 
-import org.example.TestProject.entities.User;
+import org.example.TermProject.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
+
 public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findByEmail(String email);
 //    userRepository.findAll();
 //    userRepository.findById(id);
 //    userRepository.save(user);
