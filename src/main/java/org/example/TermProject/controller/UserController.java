@@ -12,6 +12,7 @@ import java.util.List;
 
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
     //    private final Map<Long, User> users = new HashMap<>();
 //    private Long nextId = 1L;
@@ -23,7 +24,7 @@ public class UserController {
 
     @GetMapping("/")
     public String root() {
-        return "Hello, World!";
+        return "Hello, User!";
     }
 
     @GetMapping("/hello/{name}")

@@ -13,6 +13,6 @@ public class StaffController {
 
     @GetMapping("/")
     public String root() {
-        return "Hello from Staff.";
+        return "Hello, Staff!";
     }
 }

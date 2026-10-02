@@ -8,7 +8,6 @@ http:
   url: http://localhost:8080/staff/
   auth:
     type: bearer
-    token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0Iiwicm9sZSI6IlNUQUZGIiwiaWF0IjoxNzkwOTEzNDU2LCJleHAiOjE3OTA5OTk4NTZ9.BhGRaLVVpBFndAZYfOTswMIeraE6eYSYhpyBObmEr8w
 
 settings:
   encodeUrl: true
