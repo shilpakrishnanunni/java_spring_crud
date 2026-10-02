@@ -12,12 +12,12 @@ import java.util.List;
 
 
 @RestController
-public class TestController {
+public class UserController {
     //    private final Map<Long, User> users = new HashMap<>();
 //    private Long nextId = 1L;
     private final UserService userService;
 
-    public TestController(UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
