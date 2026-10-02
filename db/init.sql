@@ -1,3 +1,12 @@
+-- DROP TABLE IF EXISTS order_items;
+-- DROP TABLE IF EXISTS orders;
+-- DROP TABLE IF EXISTS menu_items;
+-- DROP TABLE IF EXISTS menu_categories;
+-- DROP TABLE IF EXISTS users;
+--
+-- DROP TYPE IF EXISTS user_role_enum;
+-- DROP TYPE IF EXISTS order_status_enum;
+
 CREATE TYPE user_role_enum AS ENUM ('USER', 'STAFF', 'ADMIN');
 CREATE TABLE IF NOT EXISTS users (
     id BIGSERIAL PRIMARY KEY,
