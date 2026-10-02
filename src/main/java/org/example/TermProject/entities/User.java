@@ -1,8 +1,13 @@
 package org.example.TermProject.entities;
 
 import jakarta.persistence.*;
-import org.jspecify.annotations.Nullable;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.time.OffsetDateTime;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "users")
 public class User {
@@ -10,66 +15,37 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(nullable = false)
     private String password;
 
-    private Integer age;
-
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Role role;
 
-    public User() {
+    @Column(name="created_at", nullable = false)
+    private OffsetDateTime createdAt;
+
+    @Column(name="updated_at", nullable = false)
+    private OffsetDateTime updatedAt;
+
+    protected User() {
     }
 
     public User(
             String name,
             String email,
             String password,
-            Integer age,
             Role role
     ) {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.age = age;
         this.role = role;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public String getPassword() { return password; }
-
-    public void setPassword(@Nullable String encode) { this.password = encode; }
-
-    public void setRole(Role role) { this.role = role; }
-
-    public Role getRole() { return role; }
-
-    public Long getId() { return id; }
-
 }

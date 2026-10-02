@@ -1,6 +1,5 @@
 package org.example.TermProject.service;
 
-import org.example.TermProject.dto.UserRequest;
 import org.example.TermProject.entities.User;
 import org.example.TermProject.exception.UserNotFoundException;
 import org.example.TermProject.repository.UserRepository;
@@ -22,31 +21,5 @@ public class UserService {
     public User getUser(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(id));
-    }
-
-    public User createUser(UserRequest request){
-        User user = new User();
-        user.setName(request.name());
-        user.setEmail(request.email());
-        user.setAge(request.age());
-
-        return userRepository.save(user);
-    }
-
-    public User updateUser(Long id, UserRequest request) {
-        User user = getUser(id);
-
-        user.setName(request.name());
-        user.setEmail(request.email());
-        user.setAge(request.age());
-
-        return userRepository.save(user);
-    }
-
-    public void deleteUser(Long id){
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException(id));
-
-        userRepository.delete(user);
     }
 }

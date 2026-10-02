@@ -7,13 +7,14 @@
 -- DROP TYPE IF EXISTS user_role_enum;
 -- DROP TYPE IF EXISTS order_status_enum;
 
-CREATE TYPE user_role_enum AS ENUM ('USER', 'STAFF', 'ADMIN');
+-- CREATE TYPE user_role_enum AS ENUM ('USER', 'STAFF', 'ADMIN');
 CREATE TABLE IF NOT EXISTS users (
     id BIGSERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    role user_role_enum NOT NULL,
+--     role user_role_enum NOT NULL,
+    role VARCHAR(20) NOT NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
@@ -35,12 +36,13 @@ CREATE TABLE IF NOT EXISTS menu_items (
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TYPE order_status_enum AS ENUM ('PLACED', 'ACCEPTED', 'PREPARING', 'READY', 'COMPLETED', 'CANCELLED', 'REJECTED');
+-- CREATE TYPE order_status_enum AS ENUM ('PLACED', 'ACCEPTED', 'PREPARING', 'READY', 'COMPLETED', 'CANCELLED', 'REJECTED');
 CREATE TABLE IF NOT EXISTS orders (
     id BIGSERIAL PRIMARY KEY,
     user_id BIGINT REFERENCES users(id),
     order_token VARCHAR(32) NOT NULL UNIQUE,
-    status order_status_enum DEFAULT 'PLACED',
+--     status order_status_enum DEFAULT 'PLACED',
+    status VARCHAR(20) NOT NULL DEFAULT 'PLACED'
     total_amount DECIMAL(10,2) NOT NULL CHECK (total_amount >= 0),
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP

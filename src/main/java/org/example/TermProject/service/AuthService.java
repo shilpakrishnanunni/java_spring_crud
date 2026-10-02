@@ -27,18 +27,12 @@ public class AuthService {
     }
 
     public AuthResponse register(RegisterRequest request) {
-
-        User user = new User();
-
-        user.setName(request.name());
-        user.setEmail(request.email());
-        user.setAge(request.age());
-
-        user.setPassword(
-                passwordEncoder.encode(request.password())
+        User user = new User(
+                request.name(),
+                request.email(),
+                passwordEncoder.encode(request.password()),
+                Role.USER
         );
-
-        user.setRole(Role.USER);
 
         User savedUser = userRepository.save(user);
 

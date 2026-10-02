@@ -1,10 +1,7 @@
 package org.example.TermProject.controller;
 
-import jakarta.validation.Valid;
 import org.example.TermProject.entities.User;
-import org.example.TermProject.dto.UserRequest;
 import org.example.TermProject.service.UserService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,35 +43,35 @@ public class UserController {
     public List<User> getUsers() {
         return userService.getUsers();
     }
-
-    @PostMapping("/users")
-    public ResponseEntity<User> createUser(
-            @Valid @RequestBody UserRequest request
-    ) {
-        User savedUser = userService.createUser(request);
-
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(savedUser);
-    }
-
-    @PutMapping("/users/{id}")
-    public User updateUser(
-            @PathVariable Long id,
-            @Valid @RequestBody UserRequest request
-    ) {
-        return userService.updateUser(id, request);
-    }
-
-
-    @DeleteMapping("/users/{id}")
-    public ResponseEntity<Void> deleteUser(
-            @PathVariable Long id
-    ) {
-        userService.deleteUser(id);
-
-        return ResponseEntity.noContent().build(); // 204
-    }
+//
+//    @PostMapping("/users")
+//    public ResponseEntity<User> createUser(
+//            @Valid @RequestBody UserRequest request
+//    ) {
+//        User savedUser = userService.createUser(request);
+//
+//        return ResponseEntity
+//                .status(HttpStatus.CREATED)
+//                .body(savedUser);
+//    }
+//
+//    @PutMapping("/users/{id}")
+//    public User updateUser(
+//            @PathVariable Long id,
+//            @Valid @RequestBody UserRequest request
+//    ) {
+//        return userService.updateUser(id, request);
+//    }
+//
+//
+//    @DeleteMapping("/users/{id}")
+//    public ResponseEntity<Void> deleteUser(
+//            @PathVariable Long id
+//    ) {
+//        userService.deleteUser(id);
+//
+//        return ResponseEntity.noContent().build(); // 204
+//    }
 
 }
 
