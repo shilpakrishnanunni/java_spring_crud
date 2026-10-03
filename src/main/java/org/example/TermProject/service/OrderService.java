@@ -3,6 +3,7 @@ package org.example.TermProject.service;
 import org.example.TermProject.dto.CreateOrderRequest;
 import org.example.TermProject.dto.OrderItemRequest;
 import org.example.TermProject.dto.OrderResponse;
+import org.example.TermProject.dto.OrderTrackingResponse;
 import org.example.TermProject.entities.MenuItem;
 import org.example.TermProject.entities.Order;
 import org.example.TermProject.entities.OrderItem;
@@ -98,6 +99,17 @@ public class OrderService {
                 .replace("-", "")
                 .substring(0,12)
                 .toUpperCase();
+    }
+
+    public OrderTrackingResponse trackOrder(String orderToken) {
+        Order order = orderRepository
+                .findByOrderToken(orderToken)
+                .orElseThrow(() -> new RuntimeException("Order not found"));
+
+        return new OrderTrackingResponse(
+                order.getOrderToken(),
+                order.getStatus()
+        );
     }
 
 }
