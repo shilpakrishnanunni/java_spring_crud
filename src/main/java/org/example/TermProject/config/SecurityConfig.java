@@ -27,6 +27,7 @@ public class SecurityConfig {
                         .requestMatchers("/staff/**").hasRole("STAFF")
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/users/**").permitAll()
+                        .requestMatchers("/orders/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/menu/**").permitAll()
                         .anyRequest().authenticated()
 //                        .anyRequest().permitAll()
